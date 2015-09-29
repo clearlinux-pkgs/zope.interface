@@ -4,7 +4,7 @@
 #
 Name     : zope.interface
 Version  : 4.1.2
-Release  : 11
+Release  : 12
 URL      : https://pypi.python.org/packages/source/z/zope.interface/zope.interface-4.1.2.tar.gz
 Source0  : https://pypi.python.org/packages/source/z/zope.interface/zope.interface-4.1.2.tar.gz
 Summary  : Interfaces for Python
