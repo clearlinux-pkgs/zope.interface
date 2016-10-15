@@ -1,6 +1,38 @@
 Changes
 =======
 
+4.3.2 (2016-09-05)
+------------------
+
+- Fix equality testing of ``implementedBy`` objects and proxies.
+  (https://github.com/zopefoundation/zope.interface/issues/55)
+
+
+4.3.1 (2016-08-31)
+------------------
+
+- Support Components subclasses that are not hashable.
+  (https://github.com/zopefoundation/zope.interface/issues/53)
+
+
+4.3.0 (2016-08-31)
+------------------
+
+- Add the ability to sort the objects returned by ``implementedBy``.
+  This is compatible with the way interface classes sort so they can
+  be used together in ordered containers like BTrees.
+  (https://github.com/zopefoundation/zope.interface/issues/42)
+
+- Make ``setuptools`` a hard dependency of ``setup.py``.
+  (https://github.com/zopefoundation/zope.interface/issues/13)
+
+- Change a linear algorithm (O(n)) in ``Components.registerUtility`` and
+  ``Components.unregisterUtility`` into a dictionary lookup (O(1)) for
+  hashable components. This substantially improves the time taken to
+  manipulate utilities in large registries at the cost of some
+  additional memory usage. (https://github.com/zopefoundation/zope.interface/issues/46)
+
+
 4.2.0 (2016-06-10)
 ------------------
 
