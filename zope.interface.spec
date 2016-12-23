@@ -4,7 +4,7 @@
 #
 Name     : zope.interface
 Version  : 4.3.2
-Release  : 20
+Release  : 21
 URL      : http://pypi.debian.net/zope.interface/zope.interface-4.3.2.tar.gz
 Source0  : http://pypi.debian.net/zope.interface/zope.interface-4.3.2.tar.gz
 Summary  : Interfaces for Python
