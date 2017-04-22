@@ -5,15 +5,20 @@
 # Source0 file verified with key 0xF2A968348913D1D8 (tseaver@palladion.com)
 #
 Name     : zope.interface
-Version  : 4.3.3
-Release  : 26
-URL      : http://pypi.debian.net/zope.interface/zope.interface-4.3.3.tar.gz
-Source0  : http://pypi.debian.net/zope.interface/zope.interface-4.3.3.tar.gz
-Source99 : http://pypi.debian.net/zope.interface/zope.interface-4.3.3.tar.gz.asc
+Version  : 4.4.0
+Release  : 27
+URL      : http://pypi.debian.net/zope.interface/zope.interface-4.4.0.tar.gz
+Source0  : http://pypi.debian.net/zope.interface/zope.interface-4.4.0.tar.gz
+Source99 : http://pypi.debian.net/zope.interface/zope.interface-4.4.0.tar.gz.asc
 Summary  : Interfaces for Python
 Group    : Development/Tools
 License  : ZPL-2.1
 Requires: zope.interface-python
+Requires: Sphinx
+Requires: coverage
+Requires: nose
+Requires: setuptools
+Requires: zope.event
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
@@ -37,23 +42,30 @@ python components for the zope.interface package.
 
 
 %prep
-%setup -q -n zope.interface-4.3.3
+%setup -q -n zope.interface-4.4.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1487186459
+export SOURCE_DATE_EPOCH=1492820204
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1487186459
+export SOURCE_DATE_EPOCH=1492820204
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
+/usr/lib/python3*/*
