@@ -1,0 +1,9 @@
+# This file contains recursive sources that require this package
+certbot
+persistent
+zope.component
+zope.configuration
+zope.exceptions
+zope.location
+zope.proxy
+zope.security
