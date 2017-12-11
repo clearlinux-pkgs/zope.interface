@@ -1,6 +1,93 @@
 Changes
 =======
 
+4.4.3 (2017-09-22)
+------------------
+
+- Avoid exceptions when the ``__annotations__`` attribute is added to
+  interface definitions with Python 3.x type hints. See `issue 98
+  <https://github.com/zopefoundation/zope.interface/issues/98>`_.
+- Fix the possibility of a rare crash in the C extension when
+  deallocating items. See `issue 100
+  <https://github.com/zopefoundation/zope.interface/issues/100>`_.
+
+
+4.4.2 (2017-06-14)
+------------------
+
+- Fix a regression storing
+  ``zope.component.persistentregistry.PersistentRegistry`` instances.
+  See `issue 85 <https://github.com/zopefoundation/zope.interface/issues/85>`_.
+
+- Fix a regression that could lead to the utility registration cache
+  of ``Components`` getting out of sync. See `issue 93
+  <https://github.com/zopefoundation/zope.interface/issues/93>`_.
+
+4.4.1 (2017-05-13)
+------------------
+
+- Simplify the caching of utility-registration data. In addition to
+  simplification, avoids spurious test failures when checking for
+  leaks in tests with persistent registries. See `pull 84
+  <https://github.com/zopefoundation/zope.interface/pull/84>`_.
+
+- Raise ``ValueError`` when non-text names are passed to adapter registry
+  methods:  prevents corruption of lookup caches.
+
+4.4.0 (2017-04-21)
+------------------
+
+- Avoid a warning from the C compiler.
+  (https://github.com/zopefoundation/zope.interface/issues/71)
+
+- Add support for Python 3.6.
+
+4.3.3 (2016-12-13)
+------------------
+
+- Correct typos and ReST formatting errors in documentation.
+
+- Add API documentation for the adapter registry.
+
+- Ensure that the ``LICENSE.txt`` file is included in built wheels.
+
+- Fix C optimizations broken on Py3k.  See the Python bug at:
+  http://bugs.python.org/issue15657
+  (https://github.com/zopefoundation/zope.interface/issues/60)
+
+
+4.3.2 (2016-09-05)
+------------------
+
+- Fix equality testing of ``implementedBy`` objects and proxies.
+  (https://github.com/zopefoundation/zope.interface/issues/55)
+
+
+4.3.1 (2016-08-31)
+------------------
+
+- Support Components subclasses that are not hashable.
+  (https://github.com/zopefoundation/zope.interface/issues/53)
+
+
+4.3.0 (2016-08-31)
+------------------
+
+- Add the ability to sort the objects returned by ``implementedBy``.
+  This is compatible with the way interface classes sort so they can
+  be used together in ordered containers like BTrees.
+  (https://github.com/zopefoundation/zope.interface/issues/42)
+
+- Make ``setuptools`` a hard dependency of ``setup.py``.
+  (https://github.com/zopefoundation/zope.interface/issues/13)
+
+- Change a linear algorithm (O(n)) in ``Components.registerUtility`` and
+  ``Components.unregisterUtility`` into a dictionary lookup (O(1)) for
+  hashable components. This substantially improves the time taken to
+  manipulate utilities in large registries at the cost of some
+  additional memory usage. (https://github.com/zopefoundation/zope.interface/issues/46)
+
+
 4.2.0 (2016-06-10)
 ------------------
 
