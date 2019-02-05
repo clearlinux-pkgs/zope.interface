@@ -4,33 +4,41 @@
 #
 Name     : zope.interface
 Version  : 4.5.0
-Release  : 44
+Release  : 45
 URL      : http://pypi.debian.net/zope.interface/zope.interface-4.5.0.tar.gz
 Source0  : http://pypi.debian.net/zope.interface/zope.interface-4.5.0.tar.gz
 Summary  : Interfaces for Python
 Group    : Development/Tools
 License  : ZPL-2.1
-Requires: zope.interface-python3
-Requires: zope.interface-python
-Requires: Sphinx
-Requires: coverage
-Requires: nose
+Requires: zope.interface-license = %{version}-%{release}
+Requires: zope.interface-python = %{version}-%{release}
+Requires: zope.interface-python3 = %{version}-%{release}
 Requires: setuptools
-Requires: zope.event
+BuildRequires : buildreq-distutils3
 BuildRequires : nose
-BuildRequires : pbr
-BuildRequires : pip
-
-BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-==================
+==========
+ÐÐ½ÑÐµÑÑÐµÐ¹ÑÑ
+==========
+.. contents::
+ÐÐ½ÑÐµÑÑÐµÐ¹ÑÑ - ÑÑÐ¾ Ð¾Ð±ÑÐµÐºÑÑ ÑÐ¿ÐµÑÐ¸ÑÐ¸ÑÐ¸ÑÑÑÑÐ¸Ðµ (Ð´Ð¾ÐºÑÐ¼ÐµÐ½ÑÐ¸ÑÑÑÑÐ¸Ðµ) Ð²Ð½ÐµÑÐ½ÐµÐµ Ð¿Ð¾Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ
+Ð¾Ð±ÑÐµÐºÑÐ¾Ð² ÐºÐ¾ÑÐ¾ÑÑÐµ Ð¸Ñ "Ð¿ÑÐµÐ´Ð¾ÑÑÐ°Ð²Ð»ÑÑÑ". ÐÐ½ÑÐµÑÑÐµÐ¹ÑÑ Ð¾Ð¿ÑÐµÐ´ÐµÐ»ÑÑÑ Ð¿Ð¾Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ ÑÐµÑÐµÐ·
+ÑÐ»ÐµÐ´ÑÑÑÐ¸Ðµ ÑÐ¾ÑÑÐ°Ð²Ð»ÑÑÑÐ¸Ðµ:
+
+%package license
+Summary: license components for the zope.interface package.
+Group: Default
+
+%description license
+license components for the zope.interface package.
+
 
 %package python
 Summary: python components for the zope.interface package.
 Group: Default
-Requires: zope.interface-python3
+Requires: zope.interface-python3 = %{version}-%{release}
 
 %description python
 python components for the zope.interface package.
@@ -53,18 +61,25 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526850164
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1549391103
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/zope.interface
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/zope.interface/LICENSE.txt
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/zope.interface/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
