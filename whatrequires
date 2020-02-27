@@ -11,5 +11,6 @@ zope.configuration
 zope.exceptions
 zope.location
 zope.proxy
+zope.schema
 zope.security
 zope.testrunner
