@@ -4,7 +4,7 @@
 #
 Name     : zope.interface
 Version  : 5.1.0
-Release  : 60
+Release  : 61
 URL      : https://files.pythonhosted.org/packages/af/d2/9675302d7ced7ec721481f4bbecd28a390a8db4ff753d28c64057b975396/zope.interface-5.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/af/d2/9675302d7ced7ec721481f4bbecd28a390a8db4ff753d28c64057b975396/zope.interface-5.1.0.tar.gz
 Summary  : Interfaces for Python
