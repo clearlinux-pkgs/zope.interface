@@ -2,6 +2,7 @@
 attrs
 certbot
 conda
+gevent
 persistent
 pysaml2
 repoze.sphinx.autointerface
