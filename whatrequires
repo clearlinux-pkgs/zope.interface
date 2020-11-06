@@ -4,9 +4,6 @@ certbot
 conda
 gevent
 persistent
-pysaml2
-repoze.sphinx.autointerface
-repoze.who
 zope.component
 zope.configuration
 zope.exceptions
